@@ -1,0 +1,1 @@
+import {Injectable} from "@angular/core";import {BehaviorSubject, Subject} from "rxjs";import {User} from "../interfaces";@Injectable()export class SearchService{  public $search: Subject<string> = new BehaviorSubject<string>('');  public $users: Subject<User[]> = new BehaviorSubject<User[]>([]);  addSearchName(item:string) {    this.$search.next(item);  }}

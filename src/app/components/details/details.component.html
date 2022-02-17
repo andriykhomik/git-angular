@@ -1,0 +1,16 @@
+<div class="user-container" *ngIf="user; else loading">
+  <h1><strong>{{user.name || 'Name'}}</strong></h1>
+  <div
+    class="user"
+  >
+    <p id="login">{{user.login}}</p>
+    <p>{{user.type}}</p>
+    <a id="userId" href="{{user.html_url}}">My Account</a>
+    <img [src]="[user.avatar_url]">
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

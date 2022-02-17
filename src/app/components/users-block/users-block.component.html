@@ -1,0 +1,17 @@
+<div class="users-container" *ngIf="users.length; else loading">
+  <h1>Your Result</h1>
+  <div
+    class="user"
+    *ngFor="let user of users"
+    [routerLink]="['/details', user.login]"
+  >
+    <p><strong>{{user.name || 'Name'}}</strong></p>
+    <p id="login">{{user.login}}</p>
+    <p>{{user.type}}</p>
+    <img [src]="[user.avatar_url]" >
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
