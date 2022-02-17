@@ -1,24 +1,20 @@
-<nav class="info nav" >
-  <a class="btn logo" [routerLink]="['/']"><strong>Git HUB</strong></a>
-  <a class="btn" [routerLink]="['/blocks']">Blocks</a>
-  <a class="btn" [routerLink]="['/table']">Table</a>
-</nav>
+
+<!--component-->
+<app-header></app-header>
 
 <div>
-    <form class="form search active" [formGroup]="form" (ngSubmit)="submit()">
-      <div class="form-control">
-        <input type="text" formControlName="search" >
-      </div>
-
-      <button class="btn btn-search">Search</button>
-    </form>
+  <form class="form search active" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control">
+      <input type="text" formControlName="search" />
+    </div>
+    <button class="btn btn-search">Search</button>
+  </form>
 
   <router-outlet class="users-panel"></router-outlet>
 </div>
 
-
-
 <footer class="info footer">
-  <a [href]="'https://github.com/'" target="_blank">Powered By <strong>Git Hub API</strong> </a>
+  <a [href]="'https://github.com/'" target="_blank"
+    >Powered By <strong>Git Hub API</strong>
+  </a>
 </footer>
-

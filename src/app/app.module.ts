@@ -3,28 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {UserService} from "./services/user.service";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
 import { UsersBlockComponent } from './components/users-block/users-block.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
-import {SearchService} from "./services/search.service";
+import { SearchService } from './services/search.service';
 import { DetailsComponent } from './components/details/details.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HeadersInterceptor } from './interceptor/headers.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersBlockComponent,
     UsersTableComponent,
-    DetailsComponent
+    DetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [UserService, SearchService],
-  bootstrap: [AppComponent]
+  providers: [
+    UserService,
+    SearchService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
